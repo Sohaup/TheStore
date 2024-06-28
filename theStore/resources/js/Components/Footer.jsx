@@ -5,7 +5,7 @@ export default function Footer({top , routeName}) {
                 <li><a>Store</a></li>
                 <li>{routeName == 'main'? <a href="#">About</a> : <a href="/">Main</a> }</li>               
             </ul>
-            <h3 className="text-4xl text-center font-bold">All Copy Right Is Saved For TheStore</h3>
+            <h4 className="text-4xl text-center font-bold">All Copy Right Is Saved For TheStore</h4>
         </footer>
     )
 }
