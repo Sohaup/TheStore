@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\Admen_Controller;
 use App\Http\Controllers\Products_Controller;
 use App\Http\Controllers\ProfileController;
+use App\Models\Admen;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -15,7 +17,8 @@ Route::get('/', function () {
 })->name('main');
 
 Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
+    $admens = Admen::all();
+    return Inertia::render('Dashboard' , ['admens'=>$admens]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -25,5 +28,5 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('productspath',Products_Controller::class);
-
+Route::resource('admens',Admen_Controller::class);
 require __DIR__.'/auth.php';

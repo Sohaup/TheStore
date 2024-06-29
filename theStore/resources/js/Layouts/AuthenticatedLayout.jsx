@@ -10,7 +10,7 @@ export default function Authenticated({ user, header, children }) {
 
     return (
         <div className="min-h-screen " style={{backgroundColor:'#d4bdb1'}}>
-            <nav className="bg-white border-b border-gray-100">
+            <nav className="bg-orange-400 border-b border-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
@@ -20,8 +20,8 @@ export default function Authenticated({ user, header, children }) {
                                 </Link>
                             </div>
 
-                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                                <NavLink href={route('dashboard')} active={route().current('dashboard')}>
+                            <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex  ">
+                                <NavLink href={route('dashboard')} active={route().current('dashboard')} >
                                     Dashboard
                                 </NavLink>
                             </div>
@@ -91,7 +91,7 @@ export default function Authenticated({ user, header, children }) {
                 </div>
 
                 <div className={(showingNavigationDropdown ? 'block' : 'hidden') + ' sm:hidden'}>
-                    <div className="pt-2 pb-3 space-y-1">
+                    <div className="pt-2 pb-3 space-y-1 text-white">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
                         </ResponsiveNavLink>
@@ -114,8 +114,8 @@ export default function Authenticated({ user, header, children }) {
             </nav>
 
             {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">{header}</div>
+                <header className="bg-black shadow text-white">
+                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 text-white">{header}</div>
                 </header>
             )}
 

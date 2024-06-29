@@ -44,4 +44,7 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+    public function admen() {
+        return $this->hasOne(Admen::class);
+    }
 }
