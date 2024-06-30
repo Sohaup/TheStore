@@ -19,46 +19,42 @@ export default function Dashboard({ auth , admens=[]}) {
                             {admens.map((admen)=> {
                                 return (
                                 auth.user.id == admen.user_id  ?
-                                <div className="p-6 text-gray-900 text-end flex flex-row justify-between h-[80px] ">
+                                <div className='grid grid-row-3 gap-4'>
+                                    <div>
+                                        <h1 className='text-orange-400 text-center font-bold text-xl'>System Admens Control</h1>
+                                    </div>
+                                <div className="p-4 text-gray-900 text-end flex flex-row justify-between h-[80px] ">
                                 <p>You Can Add Admens To The System</p>
-                                <PrimaryButton className='bg-blcak'>
+                                <PrimaryButton className='bg-blcak h-[35px]'>
                                 <a href={route('admens.create')}>Add admen</a>
+                                </PrimaryButton>                                    
+                                </div>
+                                <div className="p-4 text-gray-900 text-end flex flex-row justify-between absolue top-[500px]">
+                                <p>You Can Display all Admens On The System</p>
+                                <PrimaryButton className='bg-orange-500 hover:bg-orange-700 '>
+                                <a href={route('admens.index')}>Show admens</a>
                                 </PrimaryButton>
                                 
+                                 </div>
                                  </div>
                                   : 
                                 ""
                                 )
                             })
                            
-                        }
-
-
-
-                              {admens.map((admen)=> {
-                                return (
-                                auth.user.id == admen.user_id  ?
-                                <div className="p-6 text-gray-900 text-end flex flex-row justify-between absolue top-[500px]">
-                                <p>You Can Display all Admens On The System</p>
-                                <PrimaryButton className='bg-orange-500 hover:bg-orange-700'>
-                                <a href={route('admens.index')}>Show admens</a>
-                                </PrimaryButton>
-                                
-                                 </div>
-                                  : 
-                                ""
-                                )
-                            })} 
-
+                        }        
                         
-
-
-
-                             
-                        
-                       </div>                    
+                 </div>                    
                 </div>
             </div>
         </AuthenticatedLayout>
     );
 }
+
+
+                         
+                        
+
+
+
+                    

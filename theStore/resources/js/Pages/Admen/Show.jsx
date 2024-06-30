@@ -10,12 +10,12 @@ export default function Show({admens=[] , user , users=[]}) {
         console.log(users)
     },[])
 return (
-    <div className="flex flex-col gap-4 w-full">
+    <div className="flex flex-col gap-4 w-full ">
         <NavBar user={user}/>
 
         {admens.map((admen , index)=>{
             return (
-                <div className="flex flex-col gap-2 bg-white" key={index}>
+                <div className="flex flex-col gap-2 bg-white mx-4 rounded-md" key={index}>
                     <div className="text-start ">
                         <p className="flex flex-row gap-2 ps-3 ">
                              admin name : <span className="text-orange-400 font-bold" >{
@@ -47,7 +47,7 @@ return (
                             </span>                           
                         </p>
                     </div>
-                    <div className="flex flex-row justify-center gap-3 ">
+                    <div className="flex flex-row justify-center gap-3 mb-2">
                         <PrimaryButton className="bg-green-500 hover:bg-green-700">
                             <a href={route('admens.edit',{'admen':admenId})}>Edit</a>
                         </PrimaryButton>

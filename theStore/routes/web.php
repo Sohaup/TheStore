@@ -4,6 +4,8 @@ use App\Http\Controllers\Admen_Controller;
 use App\Http\Controllers\Products_Controller;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admen;
+use App\Models\Category;
+use App\Models\Item;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -12,7 +14,9 @@ use Inertia\Inertia;
 Route::get('/', function () {
     return Inertia::render('Welcome', [
        'user'=> Auth::user(),
-       'routeName'=>Route::currentRouteName()
+       'routeName'=>Route::currentRouteName(),
+       'categories'=>Category::all(),
+       'items'=>Item::all()
     ]);
 })->name('main');
 

@@ -10,8 +10,8 @@ export default function NavBar({user , routeName}) {
              <li>{user? <a href={route('profile.edit')}> { user.name }</a> :  <a href={route('register')}> Register</a>}</li>
              <li>{user? <a href={route('dashboard')}> Dahboard </a>: <a href={route('login')}> Login </a> }</li>
             <li hidden><a>Search</a></li>
-            <li hidden={routeName == 'main'}><a href="/">Main</a></li>
-            <li hidden={routeName == 'main'}><a><img src="./imgs/cart.svg" style={{width:50 , height:50}} className="rounded-[50%]"></img></a></li>
+            <li hidden={route().current() == 'main'  }><a href="/">Main</a></li>
+            <li hidden={route().current() == 'main' || route().current() == "admens.index"}><a><img src="./imgs/cart.svg" style={{width:50 , height:50}} className="rounded-[50%]"></img></a></li>
            
          </ul>
       </nav>
