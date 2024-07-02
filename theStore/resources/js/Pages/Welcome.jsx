@@ -7,7 +7,7 @@ import AboutStore from '@/Components/AboutStore';
 
 function SubNav({categories=[]}) {
   return (
-   <ul className='flex justify-evenly  absolue top-[80px] items-center  h-[50px]' style={{backgroundColor:"black"}}>
+   <ul className=' w-full flex justify-evenly flex-wrap absolue top-[80px] items-center  ' style={{backgroundColor:"black"}}>
     {categories.map((category , index)=>{
       return <li key={index} className='flex flex-row text-white items-center gap-1'><a href={'#'+category.name.toLowerCase()}><img src={category.img} style={{width:50 , height:50}} className='rounded-[16px]'></img></a> <p>{category.name}</p></li>    
     })}
@@ -36,7 +36,7 @@ function CategoryDisplay({categoryItems = [] , categoryName , categoryId }) {
 return (
     <section className='flex flex-col gap-4' id={categoryName.toLowerCase()}>
       <div className='bg-orange-100 mx-3 rounded-lg text-center'>
-        <hr vh></hr>
+        <hr vh={true}></hr>
         <h2 className='text-2xl text-orange-700 font-bold'>{categoryName}</h2>
         <hr vh></hr>
       </div>
@@ -67,7 +67,7 @@ export default function Welcome({ user , routeName , categories=[] , items=[] })
             return <CategoryDisplay categoryName={category.name} categoryItems={items} categoryId={category.id} key={index}/>
           })}
         </section>
-        <AboutStore/>
+       
         <Footer top={2000} routeName={routeName}/>
       </main>      
       

@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admen_Controller;
+use App\Http\Controllers\Categories_Controller;
+use App\Http\Controllers\Handle_Category_Update_Controller;
 use App\Http\Controllers\Products_Controller;
 use App\Http\Controllers\ProfileController;
 use App\Models\Admen;
@@ -33,4 +35,7 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('productspath',Products_Controller::class);
 Route::resource('admens',Admen_Controller::class);
+Route::resource('categoriespath',Categories_Controller::class);
+Route::match(['POST','PUT'],'/categoriesUpdate/{id}',[Categories_Controller::class , 'update'])->name('category_update');
+
 require __DIR__.'/auth.php';
