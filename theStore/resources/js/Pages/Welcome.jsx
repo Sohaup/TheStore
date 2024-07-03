@@ -19,11 +19,11 @@ function ItemsDisplay({item = {}  , category}) {
  
   return ( 
    
-      <div className='w-full grid grid-rows-2 justify-item-between transition-all ease duration-[500ms] bg-white hover:drop-shadow-2xl hover:bg-orange-200  rounded-[16px] content-center  ' style={{maxHeight:300}}>
-        <div className='flex flex-row justify-center  relative h-[250px] '>
-          <img src={item.src} className='object-stretch rounded-[16px] '></img>
+      <div className='w-full grid grid-rows-2 justify-item-between transition-all ease duration-[500ms] bg-orange-200 drop-shadow-2xl shadow-2xl hover:bg-orange-400  rounded-[16px] content-center  ' style={{maxHeight:300}}>
+        <div className='flex flex-row justify-center  relative w-full h-[250px] '>
+          <img src={item.src} className='object-stretch rounded-[16px] w-full '></img>
         </div>
-        <div className='flex flex-row justify-center items-end  '>
+        <div className='flex flex-row justify-center items-end '>
           <p className='text-md italic '>{item.name}</p>
         </div>
       </div>
@@ -62,13 +62,14 @@ export default function Welcome({ user , routeName , categories=[] , items=[] })
       <main>
         <NavBar user={user} routeName={routeName}/>
         <SubNav categories={categories} />
-        <section className='absolute top-[200px] flex flex-col gap-4'>
+        <section className='absolute w-full bg-white top-[200px] flex flex-col gap-4'>
           {categories.map((category , index) => {
             return <CategoryDisplay categoryName={category.name} categoryItems={items} categoryId={category.id} key={index}/>
           })}
+           <Footer  routeName={routeName} />
         </section>
        
-        <Footer top={2000} routeName={routeName}/>
+       
       </main>      
       
     );

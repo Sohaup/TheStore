@@ -10,5 +10,8 @@ class Category extends Model
     use HasFactory;
     protected $fillables = ['name','img'];
     protected $table = 'categories';
-    public $timestamps = false; 
+    public $timestamps = false;
+    public function item() {
+        return $this->hasOne(Category::class);
+    } 
 }

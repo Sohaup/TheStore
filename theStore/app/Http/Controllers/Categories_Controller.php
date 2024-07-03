@@ -81,7 +81,7 @@ class Categories_Controller extends Controller
            $category = Category::find($id);
            $category->name = $request->input('name');
            $category->img = '/categories'.'/'.$path;
-           $category->save();
+           $category->update();
            return redirect()->route('categoriespath.index');
        } else {
            return "Fail to Insert Category";
@@ -94,7 +94,13 @@ class Categories_Controller extends Controller
      */
     public function destroy(string $id)
     {
-       Category::find($id)->delete();
-       return redirect()->route('categoriespath.index');
+       $category = Category::find($id);
+       if (unlink(public_path($category->img))) {
+            $category->delete();
+            return redirect()->route('categoriespath.index');
+       } else {
+        return "failed to delete category";
+       }
+       
     }
 }

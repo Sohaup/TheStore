@@ -29,7 +29,7 @@ export default function Dashboard({ auth , admens=[]}) {
                                 <a href={route('admens.create')}>Add admen</a>
                                 </PrimaryButton>                                    
                                 </div>
-                                <div className="p-4 text-gray-900 text-end flex flex-row justify-between absolue top-[500px]">
+                                <div className="p-4 text-gray-900  flex flex-row justify-between absolue top-[500px]">
                                 <p>You Can Display all Admens On The System</p>
                                 <PrimaryButton className='bg-orange-500 hover:bg-orange-700 '>
                                 <a href={route('admens.index')}>Show admens</a>
@@ -51,7 +51,7 @@ export default function Dashboard({ auth , admens=[]}) {
                                 auth.user.id == admen.user_id  ?
                                 <div className='grid grid-row-3 gap-4'>
                                     <div>
-                                        <h1 className='text-orange-400 text-center font-bold text-xl'>System Categories Control</h1>
+                                        <h1 className='text-green-400 text-center font-bold text-xl'>System Categories Control</h1>
                                     </div>
                                 <div className="p-4 text-gray-900 text-end flex flex-row justify-between h-[80px] ">
                                 <p>You Can Add Category To The Store</p>
@@ -59,10 +59,39 @@ export default function Dashboard({ auth , admens=[]}) {
                                 <a href={route('categoriespath.create')}>Add Category</a>
                                 </PrimaryButton>                                    
                                 </div>
-                                <div className="p-4 text-gray-900 text-end flex flex-row justify-between absolue top-[500px]">
-                                <p>You Can Display all Categories On The System</p>
+                                <div className="p-4 text-gray-900 flex flex-row justify-between absolue top-[500px]">
+                                <p>You Can Display all Categories On The Store</p>
+                                <PrimaryButton className='bg-orange-500 hover:bg-orange-700 h-auto '>
+                                <a href={route('categoriespath.index')}>Show Categories</a>
+                                </PrimaryButton>
+                                
+                                 </div>
+                                 </div>
+                                  : 
+                                ""
+                                )
+                            })
+                           
+                        }        
+                 </div>           
+                 <div className='mt-2 bg-white'>
+                 {admens.map((admen)=> {
+                                return (
+                                auth.user.id == admen.user_id  ?
+                                <div className='grid grid-row-3 gap-4'>
+                                    <div>
+                                        <h1 className='text-blue-400 text-center font-bold text-xl'>System Items Control</h1>
+                                    </div>
+                                <div className="p-4 text-gray-900 text-end flex flex-row justify-between h-[80px] ">
+                                <p>You Can Add Item To The Store</p>
+                                <PrimaryButton className='bg-blcak h-[35px]'>
+                                <a href={route('items.create')}>Add Item</a>
+                                </PrimaryButton>                                    
+                                </div>
+                                <div className="p-4 text-gray-900  flex flex-row justify-between absolue top-[500px]">
+                                <p>You Can Display all Items On The Store</p>
                                 <PrimaryButton className='bg-orange-500 hover:bg-orange-700 '>
-                                <a href={route('categoriespath.index')}>Show Category</a>
+                                <a href={route('items.index')}>Show Items</a>
                                 </PrimaryButton>
                                 
                                  </div>
