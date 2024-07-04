@@ -102,7 +102,36 @@ export default function Dashboard({ auth , admens=[]}) {
                             })
                            
                         }        
-                 </div>           
+                 </div>  
+                 <div className='mt-2 bg-white'>
+                 {admens.map((admen)=> {
+                                return (
+                                auth.user.id == admen.user_id  ?
+                                <div className='grid grid-row-3 gap-4'>
+                                    <div>
+                                        <h1 className='text-red-400 text-center font-bold text-xl'>System Types Control</h1>
+                                    </div>
+                                <div className="p-4 text-gray-900 text-end flex flex-row justify-between h-[80px] ">
+                                <p>You Can Add Type To The Store</p>
+                                <PrimaryButton className='bg-blcak h-[35px]'>
+                                <a href={route('types.create')}>Add Type</a>
+                                </PrimaryButton>                                    
+                                </div>
+                                <div className="p-4 text-gray-900  flex flex-row justify-between absolue top-[500px]">
+                                <p>You Can Display all Types On The Store</p>
+                                <PrimaryButton className='bg-orange-500 hover:bg-orange-700 '>
+                                <a href={route('types.index')}>Show Types</a>
+                                </PrimaryButton>
+                                
+                                 </div>
+                                 </div>
+                                  : 
+                                ""
+                                )
+                            })
+                           
+                        }        
+                 </div>                    
                 </div>
             </div>
         </AuthenticatedLayout>

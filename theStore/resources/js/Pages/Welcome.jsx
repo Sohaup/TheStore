@@ -15,35 +15,37 @@ function SubNav({categories=[]}) {
   )
 }
 
-function ItemsDisplay({item = {}  , category}) {
+function ItemsDisplay({item = {}  , category={} }) {
  
   return ( 
    
       <div className='w-full grid grid-rows-2 justify-item-between transition-all ease duration-[500ms] bg-orange-200 drop-shadow-2xl shadow-2xl hover:bg-orange-400  rounded-[16px] content-center  ' style={{maxHeight:300}}>
+       <a href={route('types.show',{'type':1,'category_id':category.id,'item_id':item.id})} className='w-full'>
         <div className='flex flex-row justify-center  relative w-full h-[250px] '>
-          <img src={item.src} className='object-stretch rounded-[16px] w-full '></img>
+        <img src={item.src} className='object-stretch rounded-[16px] w-full '></img>
         </div>
         <div className='flex flex-row justify-center items-end '>
-          <p className='text-md italic '>{item.name}</p>
+          <p className='text-md italic '> {item.name}</p>
         </div>
+        </a>
       </div>
      
      )
 }
 
-function CategoryDisplay({categoryItems = [] , categoryName , categoryId }) {
+function CategoryDisplay({categoryItems = [] , category={} }) {
   
 return (
-    <section className='flex flex-col gap-4' id={categoryName.toLowerCase()}>
+    <section className='flex flex-col gap-4' id={category.name.toLowerCase()}>
       <div className='bg-orange-100 mx-3 rounded-lg text-center'>
         <hr vh={true}></hr>
-        <h2 className='text-2xl text-orange-700 font-bold'>{categoryName}</h2>
+        <h2 className='text-2xl text-orange-700 font-bold'>{category.name}</h2>
         <hr vh></hr>
       </div>
       <div className='flex flex-row gap-2'>
        {categoryItems.map((item , index)=> {
-        if (item.category_id == categoryId) {
-        return <ItemsDisplay item={item} key={index}/>
+        if (item.category_id == category.id ) {
+        return <ItemsDisplay item={item} key={index}  category={category}/>
         }
        })}
       </div>
@@ -53,22 +55,22 @@ return (
 
 
 
-export default function Welcome({ user , routeName , categories=[] , items=[] }) {
+export default function Welcome({ user , routeName , categories=[] , items=[]}) {
     
     useEffect(()=>{
       console.log(items , categories)
     })
     return (
-      <main>
+      <main >
         <NavBar user={user} routeName={routeName}/>
         <SubNav categories={categories} />
         <section className='absolute w-full bg-white top-[200px] flex flex-col gap-4'>
           {categories.map((category , index) => {
-            return <CategoryDisplay categoryName={category.name} categoryItems={items} categoryId={category.id} key={index}/>
+            return <CategoryDisplay  categoryItems={items}  category={category}   key={index}/>
           })}
-           <Footer  routeName={routeName} />
+            <Footer  routeName={routeName} />
         </section>
-       
+      
        
       </main>      
       

@@ -6,9 +6,11 @@ use App\Http\Controllers\Handle_Category_Update_Controller;
 use App\Http\Controllers\Items_Controller;
 use App\Http\Controllers\Products_Controller;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Types_Controller;
 use App\Models\Admen;
 use App\Models\Category;
 use App\Models\Item;
+use App\Models\Type;
 use Database\Seeders\Items_Seeder;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +22,8 @@ Route::get('/', function () {
        'user'=> Auth::user(),
        'routeName'=>Route::currentRouteName(),
        'categories'=>Category::all(),
-       'items'=>Item::all()
+       'items'=>Item::all(),
+       'types'=>Type::all()
     ]);
 })->name('main');
 
@@ -43,4 +46,6 @@ Route::resource('categoriespath',Categories_Controller::class);
 Route::match(['POST','PUT'],'/categoriesUpdate/{id}',[Categories_Controller::class , 'update'])->name('category_update');
 Route::resource('items',Items_Controller::class);
 Route::match(['POST','PUT'],'/itemsUpdate/{id}',[Items_Controller::class , 'update'])->name('item_update');
+Route::resource('types',Types_Controller::class);
+Route::match(['POST','PUT'],'/type/update/{id}',[Types_Controller::class , 'update'])->name('type_update');
 require __DIR__.'/auth.php';

@@ -14,4 +14,7 @@ class Item extends Model
     public function category() {
         return $this->belongsTo(Category::class);
     }
+    public function type() {
+        return $this->hasMany(Type::class);
+    }
 }
